@@ -62,13 +62,24 @@
       background: black;
       position: absolute;
       top: 50%;
+      transition: all 0.05s;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition-timing-function: cubic-bezier(0.42, 0, 0.36, 1.81);
     }
 
   </style>
 
   <script>
-
-
+    const secondHand = document.querySelector('.second-hand');
+    const setDate = () => {
+      const now = new Date();
+      const second = now.getSeconds();
+      const secondDegrees = (second / 60) * 360;
+      console.log(secondDegrees);
+      secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+    };
+    setInterval(setDate, 1000);
   </script>
 </body>
 </html>
